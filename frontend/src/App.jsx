@@ -8,6 +8,7 @@ import Products from "./pages/Products";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/Header";
+import Signup from "./pages/Signup";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signup" element={isAuthenticated ? <Navigate to="/products" /> : <Signup />} />
         <Route path="/login" element={isAuthenticated ? <Navigate to="/profile" /> : <Login />} />
         <Route path="/products" element={<Products />} />
         <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
